@@ -50,6 +50,7 @@
 		E746CFA2257D41BE00467322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E746CFA3257D41BE00467322 /* QB64_IDE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QB64_IDE.entitlements; sourceTree = "<group>"; };
 		E78CF7D0257FE8100047B6ED /* SourceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceListViewController.swift; sourceTree = "<group>"; };
+		E78CF7D9258013040047B6ED /* PREVIEW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PREVIEW.png; sourceTree = "<group>"; };
 		E7B01BCA257D842A0010BEE5 /* DataSourceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceExtensions.swift; sourceTree = "<group>"; };
 		E7B11950257D5B8C00028AAD /* LineNumberRulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineNumberRulerView.swift; sourceTree = "<group>"; };
 		E7B11963257D772900028AAD /* SourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFile.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		E746CF8A257D41BE00467322 = {
 			isa = PBXGroup;
 			children = (
+				E78CF7D9258013040047B6ED /* PREVIEW.png */,
 				E7455ADE257F2FBD00C33CA8 /* README.md */,
 				E7B01BC1257D7D130010BEE5 /* Controllers */,
 				E7B11962257D771800028AAD /* Models */,
