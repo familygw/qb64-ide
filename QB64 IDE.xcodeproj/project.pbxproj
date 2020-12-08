@@ -3,18 +3,41 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7455A8C257E8D6200C33CA8 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7455A8B257E8D6200C33CA8 /* Content.swift */; };
+		E7455AAD257EC0F600C33CA8 /* ModernDOS8x14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7455AA8257EC0F600C33CA8 /* ModernDOS8x14.ttf */; };
+		E7455AAE257EC0F600C33CA8 /* ModernDOS9x16.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7455AA9257EC0F600C33CA8 /* ModernDOS9x16.ttf */; };
+		E7455AAF257EC0F600C33CA8 /* ModernDOS8x16.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7455AAA257EC0F600C33CA8 /* ModernDOS8x16.ttf */; };
+		E7455AB0257EC0F600C33CA8 /* ModernDOS8x8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7455AAB257EC0F600C33CA8 /* ModernDOS8x8.ttf */; };
+		E7455AB1257EC0F600C33CA8 /* ModernDOS9x14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7455AAC257EC0F600C33CA8 /* ModernDOS9x14.ttf */; };
+		E7455AB8257ECEA900C33CA8 /* DocumentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7455AB7257ECEA900C33CA8 /* DocumentExtensions.swift */; };
+		E7455AC7257ED6C700C33CA8 /* BasicSyntax.json in Resources */ = {isa = PBXBuildFile; fileRef = E7455AB3257ECB5900C33CA8 /* BasicSyntax.json */; };
+		E7455ACC257EDC8A00C33CA8 /* CodeSyntax.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7455ACB257EDC8A00C33CA8 /* CodeSyntax.swift */; };
+		E7455AD1257EE7ED00C33CA8 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = E7455AD0257EE7ED00C33CA8 /* Splash */; };
 		E746CF97257D41BE00467322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746CF96257D41BE00467322 /* AppDelegate.swift */; };
 		E746CF99257D41BE00467322 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E746CF98257D41BE00467322 /* Document.swift */; };
 		E746CF9C257D41BE00467322 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = E746CF9A257D41BE00467322 /* Document.xib */; };
 		E746CF9E257D41BE00467322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E746CF9D257D41BE00467322 /* Assets.xcassets */; };
 		E746CFA1257D41BE00467322 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E746CF9F257D41BE00467322 /* MainMenu.xib */; };
+		E746CFB1257D464100467322 /* SwiftHEXColors in Frameworks */ = {isa = PBXBuildFile; productRef = E746CFB0257D464100467322 /* SwiftHEXColors */; };
+		E7B01BCB257D842A0010BEE5 /* DataSourceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B01BCA257D842A0010BEE5 /* DataSourceExtensions.swift */; };
+		E7B11951257D5B8C00028AAD /* LineNumberRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B11950257D5B8C00028AAD /* LineNumberRulerView.swift */; };
+		E7B11964257D772900028AAD /* SourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B11963257D772900028AAD /* SourceFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E7455A8B257E8D6200C33CA8 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		E7455AA8257EC0F600C33CA8 /* ModernDOS8x14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModernDOS8x14.ttf; sourceTree = "<group>"; };
+		E7455AA9257EC0F600C33CA8 /* ModernDOS9x16.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModernDOS9x16.ttf; sourceTree = "<group>"; };
+		E7455AAA257EC0F600C33CA8 /* ModernDOS8x16.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModernDOS8x16.ttf; sourceTree = "<group>"; };
+		E7455AAB257EC0F600C33CA8 /* ModernDOS8x8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModernDOS8x8.ttf; sourceTree = "<group>"; };
+		E7455AAC257EC0F600C33CA8 /* ModernDOS9x14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModernDOS9x14.ttf; sourceTree = "<group>"; };
+		E7455AB3257ECB5900C33CA8 /* BasicSyntax.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = BasicSyntax.json; sourceTree = "<group>"; };
+		E7455AB7257ECEA900C33CA8 /* DocumentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentExtensions.swift; sourceTree = "<group>"; };
+		E7455ACB257EDC8A00C33CA8 /* CodeSyntax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSyntax.swift; sourceTree = "<group>"; };
 		E746CF93257D41BE00467322 /* QB64 IDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QB64 IDE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E746CF96257D41BE00467322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E746CF98257D41BE00467322 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -23,6 +46,9 @@
 		E746CFA0257D41BE00467322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E746CFA2257D41BE00467322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E746CFA3257D41BE00467322 /* QB64_IDE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QB64_IDE.entitlements; sourceTree = "<group>"; };
+		E7B01BCA257D842A0010BEE5 /* DataSourceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceExtensions.swift; sourceTree = "<group>"; };
+		E7B11950257D5B8C00028AAD /* LineNumberRulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineNumberRulerView.swift; sourceTree = "<group>"; };
+		E7B11963257D772900028AAD /* SourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E746CFB1257D464100467322 /* SwiftHEXColors in Frameworks */,
+				E7455AD1257EE7ED00C33CA8 /* Splash in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +67,10 @@
 		E746CF8A257D41BE00467322 = {
 			isa = PBXGroup;
 			children = (
+				E7B01BC1257D7D130010BEE5 /* Controllers */,
+				E7B11962257D771800028AAD /* Models */,
+				E7B1194F257D5B7800028AAD /* Extensions */,
+				E7B11945257D54E100028AAD /* Fonts */,
 				E746CF95257D41BE00467322 /* QB64 IDE */,
 				E746CF94257D41BE00467322 /* Products */,
 			);
@@ -55,15 +87,55 @@
 		E746CF95257D41BE00467322 /* QB64 IDE */ = {
 			isa = PBXGroup;
 			children = (
-				E746CF96257D41BE00467322 /* AppDelegate.swift */,
-				E746CF98257D41BE00467322 /* Document.swift */,
 				E746CF9A257D41BE00467322 /* Document.xib */,
 				E746CF9D257D41BE00467322 /* Assets.xcassets */,
 				E746CF9F257D41BE00467322 /* MainMenu.xib */,
 				E746CFA2257D41BE00467322 /* Info.plist */,
 				E746CFA3257D41BE00467322 /* QB64_IDE.entitlements */,
+				E746CF96257D41BE00467322 /* AppDelegate.swift */,
+				E746CF98257D41BE00467322 /* Document.swift */,
 			);
 			path = "QB64 IDE";
+			sourceTree = "<group>";
+		};
+		E7B01BC1257D7D130010BEE5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E7B11945257D54E100028AAD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E7455AAB257EC0F600C33CA8 /* ModernDOS8x8.ttf */,
+				E7455AA8257EC0F600C33CA8 /* ModernDOS8x14.ttf */,
+				E7455AAA257EC0F600C33CA8 /* ModernDOS8x16.ttf */,
+				E7455AAC257EC0F600C33CA8 /* ModernDOS9x14.ttf */,
+				E7455AA9257EC0F600C33CA8 /* ModernDOS9x16.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E7B1194F257D5B7800028AAD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E7B11950257D5B8C00028AAD /* LineNumberRulerView.swift */,
+				E7B01BCA257D842A0010BEE5 /* DataSourceExtensions.swift */,
+				E7455AB7257ECEA900C33CA8 /* DocumentExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E7B11962257D771800028AAD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7B11963257D772900028AAD /* SourceFile.swift */,
+				E7455A8B257E8D6200C33CA8 /* Content.swift */,
+				E7455AB3257ECB5900C33CA8 /* BasicSyntax.json */,
+				E7455ACB257EDC8A00C33CA8 /* CodeSyntax.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +154,10 @@
 			dependencies = (
 			);
 			name = "QB64 IDE";
+			packageProductDependencies = (
+				E746CFB0257D464100467322 /* SwiftHEXColors */,
+				E7455AD0257EE7ED00C33CA8 /* Splash */,
+			);
 			productName = "QB64 IDE";
 			productReference = E746CF93257D41BE00467322 /* QB64 IDE.app */;
 			productType = "com.apple.product-type.application";
@@ -109,6 +185,10 @@
 				Base,
 			);
 			mainGroup = E746CF8A257D41BE00467322;
+			packageReferences = (
+				E746CFAF257D464100467322 /* XCRemoteSwiftPackageReference "SwiftHEXColors" */,
+				E7455ACF257EE7ED00C33CA8 /* XCRemoteSwiftPackageReference "Splash" */,
+			);
 			productRefGroup = E746CF94257D41BE00467322 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -123,8 +203,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7455AB0257EC0F600C33CA8 /* ModernDOS8x8.ttf in Resources */,
 				E746CF9E257D41BE00467322 /* Assets.xcassets in Resources */,
+				E7455AAF257EC0F600C33CA8 /* ModernDOS8x16.ttf in Resources */,
+				E7455AAD257EC0F600C33CA8 /* ModernDOS8x14.ttf in Resources */,
+				E7455AAE257EC0F600C33CA8 /* ModernDOS9x16.ttf in Resources */,
+				E7455AC7257ED6C700C33CA8 /* BasicSyntax.json in Resources */,
 				E746CF9C257D41BE00467322 /* Document.xib in Resources */,
+				E7455AB1257EC0F600C33CA8 /* ModernDOS9x14.ttf in Resources */,
 				E746CFA1257D41BE00467322 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +222,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7B11964257D772900028AAD /* SourceFile.swift in Sources */,
+				E7B11951257D5B8C00028AAD /* LineNumberRulerView.swift in Sources */,
+				E7455AB8257ECEA900C33CA8 /* DocumentExtensions.swift in Sources */,
+				E7455A8C257E8D6200C33CA8 /* Content.swift in Sources */,
+				E7B01BCB257D842A0010BEE5 /* DataSourceExtensions.swift in Sources */,
 				E746CF99257D41BE00467322 /* Document.swift in Sources */,
+				E7455ACC257EDC8A00C33CA8 /* CodeSyntax.swift in Sources */,
 				E746CF97257D41BE00467322 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,8 +376,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "QB64 IDE/QB64_IDE.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				INFOPLIST_FILE = "QB64 IDE/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,8 +397,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "QB64 IDE/QB64_IDE.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				INFOPLIST_FILE = "QB64 IDE/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -338,6 +434,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7455ACF257EE7ED00C33CA8 /* XCRemoteSwiftPackageReference "Splash" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Splash.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.0;
+			};
+		};
+		E746CFAF257D464100467322 /* XCRemoteSwiftPackageReference "SwiftHEXColors" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thii/SwiftHEXColors.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7455AD0257EE7ED00C33CA8 /* Splash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7455ACF257EE7ED00C33CA8 /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = Splash;
+		};
+		E746CFB0257D464100467322 /* SwiftHEXColors */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E746CFAF257D464100467322 /* XCRemoteSwiftPackageReference "SwiftHEXColors" */;
+			productName = SwiftHEXColors;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E746CF8B257D41BE00467322 /* Project object */;
 }
