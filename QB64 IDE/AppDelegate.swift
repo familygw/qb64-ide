@@ -23,11 +23,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
    
   @objc func runApp(_ sender: Any) {
-    let doc = NSApp.orderedDocuments.first as! Document
-
-    doc.save(self)
-    print("RUN APP!!!")
-
+    if let doc = NSApp.orderedDocuments.first as? Document {
+      doc.save(self)
+      print("RUN APP!!!")
+    }
   }
 
 }

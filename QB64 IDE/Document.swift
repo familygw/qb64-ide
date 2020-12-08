@@ -14,10 +14,10 @@ class Document: NSDocument {
   var sideBarWidth: CGFloat = 250
   var sideBarVisible: Bool = true
   var contents: Content = Content("DEFINT A-Z\n")
+  var isLoading: Bool = false
 
   // MARK: - Private vars
   private var isRunning: Bool = false
-  private var rootFolder: BaseElement?;
   
   //- MARK: - Outlets
   @IBOutlet weak var mainEditor: NSTextView!
@@ -47,11 +47,6 @@ class Document: NSDocument {
     }
     self.displayName = self.displayName.uppercased()
     
-    rootFolder = SourceFolder("/Users/familygw/Projects/QB64IDE");
-    rootFolder?.childs?.append(SourceFile("/Users/familygw/Projects/QB64IDE/file1.bas"))
-    rootFolder?.childs?.append(SourceFile("/Users/familygw/Projects/QB64IDE/file2.bas"))
-    rootFolder?.childs?.append(SourceFile("/Users/familygw/Projects/QB64IDE/file3.bas"))
-    
     self.initiateEditor()
   }
   
@@ -59,12 +54,15 @@ class Document: NSDocument {
     super.makeWindowControllers()
   }
   
+  /** method called when information is going to be saved  */
   override func data(ofType typeName: String) throws -> Data {
     return contents.data()!
   }
   
+  /** method called when information is to being loaded */
   override func read(from data: Data, ofType typeName: String) throws {
     contents.read(data)
+    isLoading = true
   }
   
 }

@@ -11,13 +11,17 @@ extension Document: NSTextStorageDelegate, NSWindowDelegate {
   
   // MARK: - Window Delegates
   func windowWillResize(_ sender: NSWindow, to frameSize: NSSize) -> NSSize {
-    sideBarWidth = splitView.subviews[0].frame.width
+    if (splitView.subviews[0].frame.width > 1) {
+      sideBarWidth = splitView.subviews[0].frame.width
+    }
     
     return frameSize
   }
   
   func windowDidResize(_ notification: Notification) {
-    splitView.setPosition(sideBarWidth, ofDividerAt: 0)
+    if (splitView.subviews[0].frame.width > 1) {
+      splitView.setPosition(sideBarWidth, ofDividerAt: 0)
+    }
   }
   
   // MARK: - TextStorage Delegates
@@ -50,7 +54,15 @@ extension Document: NSTextStorageDelegate, NSWindowDelegate {
         }
         //-
       }
+      
+      if (isLoading) {
+        self.isLoading = false
+      } else {
+        self.updateChangeCount(.changeDone)
+      }
     }
+    
+    self.contents.contentString = textStorage.string
   }
   
   private func applyStyles(_ textStorage: NSTextStorage, _ attrs: [NSAttributedString.Key : Any], _ range: NSRange, _ upper: Bool = false) {
