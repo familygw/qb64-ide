@@ -38,7 +38,6 @@
 		E7455AB3257ECB5900C33CA8 /* BasicSyntax.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = BasicSyntax.json; sourceTree = "<group>"; wrapsLines = 1; };
 		E7455AB7257ECEA900C33CA8 /* DocumentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentExtensions.swift; sourceTree = "<group>"; };
 		E7455ACB257EDC8A00C33CA8 /* CodeSyntax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSyntax.swift; sourceTree = "<group>"; };
-		E7455AD8257F2CF100C33CA8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E746CF93257D41BE00467322 /* QB64 IDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QB64 IDE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E746CF96257D41BE00467322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E746CF98257D41BE00467322 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -68,7 +67,6 @@
 		E746CF8A257D41BE00467322 = {
 			isa = PBXGroup;
 			children = (
-				E7455AD8257F2CF100C33CA8 /* README.md */,
 				E7B01BC1257D7D130010BEE5 /* Controllers */,
 				E7B11962257D771800028AAD /* Models */,
 				E7B1194F257D5B7800028AAD /* Extensions */,
