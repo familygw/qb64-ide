@@ -21,6 +21,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationShouldTerminate(_ sender: NSApplication)-> NSApplication.TerminateReply {
     return .terminateNow
   }
-  
+   
+  @objc func runApp(_ sender: Any) {
+    let doc = NSApp.orderedDocuments.first as! Document
+
+    doc.save(self)
+    print("RUN APP!!!")
+
+  }
+
 }
 

@@ -7,20 +7,28 @@
 import Cocoa
 import Foundation
 
-extension Document: NSTextStorageDelegate {
+extension Document: NSTextStorageDelegate, NSWindowDelegate {
   
+  // MARK: - Window Delegates
+  func windowWillResize(_ sender: NSWindow, to frameSize: NSSize) -> NSSize {
+    sideBarWidth = splitView.subviews[0].frame.width
+    
+    return frameSize
+  }
+  
+  func windowDidResize(_ notification: Notification) {
+    splitView.setPosition(sideBarWidth, ofDividerAt: 0)
+  }
+  
+  // MARK: - TextStorage Delegates
   func textStorage(_ textStorage: NSTextStorage, didProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int) {
-    //textEditor.process(editedRange)
-    //print("Delta \(delta) - Mask: \(editedMask.rawValue)")
     if delta != 0 && editedMask.rawValue > 1 {
-      //print("Has changed, colorizing...")
-      
       guard let filepath = Bundle.main.path(forResource: "BasicSyntax", ofType: "json") else { return }
       guard let contents = try? String(contentsOfFile: filepath).data(using: .utf8) else { return }
       guard let syntax = try? JSONDecoder().decode(CodeSyntax.self, from: contents) else { return }
       
       var extended = NSUnionRange(editedRange, NSString(string: mainEditor.string).lineRange(for: NSMakeRange(editedRange.location, 0)))
-          extended = NSUnionRange(editedRange, NSString(string: mainEditor.string).lineRange(for: NSMakeRange(NSMaxRange(editedRange), 0)))
+      extended = NSUnionRange(editedRange, NSString(string: mainEditor.string).lineRange(for: NSMakeRange(NSMaxRange(editedRange), 0)))
       
       for setting in syntax.settings {
         //-
@@ -51,5 +59,58 @@ extension Document: NSTextStorageDelegate {
       textStorage.replaceCharacters(in: range, with: (textStorage.string as NSString).substring(with: range).uppercased() )
     }
   }
-
+  
+  // MARK: - Actions
+  @IBAction func btnRunClick(_ sender: Any) {
+    NSApp.sendAction(#selector(AppDelegate.runApp(_:)), to: nil, from: self)
+  }
+  
+  @IBAction func btnStopClick(_ sender: Any) {
+  }
+  
+  @IBAction func toggleSidebar(_ sender: Any) {
+    if (sideBarVisible) {
+      sideBarWidth = splitView.subviews[0].frame.width
+      animatePanelChange(toPosition: 0, ofDividerAt: 0, to: false)
+      sideBarVisible = false
+    } else {
+      animatePanelChange(toPosition: sideBarWidth, ofDividerAt: 0, to: false)
+      sideBarVisible = true
+    }
+  }
+  
+  private func animatePanelChange(toPosition position: CGFloat, ofDividerAt dividerIndex: Int, to visible: Bool) {
+    NSAnimationContext.runAnimationGroup { context in
+      context.allowsImplicitAnimation = true
+      context.duration = 0.3
+      
+      splitView.setPosition(position, ofDividerAt: dividerIndex)
+      splitView.layoutSubtreeIfNeeded()
+    }
+  }
+  
+  func initiateEditor() {
+    //-
+    //- Setup editor preferences
+    mainEditor.font = NSFont(name: "ModernDOS9x16", size: 16)
+    mainEditor.textColor = NSColor(hexString: "#ffffff")
+    mainEditor.backgroundColor = NSColor(hexString: "#0000aa")!
+    
+    mainEditor.isAutomaticDataDetectionEnabled = false
+    mainEditor.isAutomaticLinkDetectionEnabled = false
+    mainEditor.isAutomaticTextCompletionEnabled = false
+    mainEditor.isAutomaticTextReplacementEnabled = false
+    mainEditor.isAutomaticDashSubstitutionEnabled = false
+    mainEditor.isAutomaticQuoteSubstitutionEnabled = false
+    mainEditor.isAutomaticSpellingCorrectionEnabled = false
+    
+    mainEditor.textStorage?.delegate = self
+    
+    let lines = String(contents.contentString.components(separatedBy: "\n").count) as NSString
+    let size = lines.size(withAttributes: [NSAttributedString.Key.font: mainEditor.font!])
+    mainEditor.lnv_setUpLineNumberView(size.width + 11)
+    
+    mainEditor.string = contents.contentString
+  }
+  
 }

@@ -12,7 +12,7 @@
   "color": "#55ff55",
   "upper": false
   }, {
-  "exp": "\\b(defint|deflng|dim|declare|library|timer|shared|if|else|then|for|to|next|output|val|asc|lock|write|on|error|goto|locate|ubound|pcopy|color|chdir|while|mkdir|kill|instr|redim|function|lof|len|and|random|end|as|string|integer|print|let|data|freefile|read|restore|long|const|case|open|line|input|close|shell|do|loop|until|_direxists|_screenshow|_hide|_limit|_byte|system|inkey|_integer|_unsigned|_instrrev)\\b",
+  "exp": "\\b(defint|deflng|dim|cls|declare|library|timer|shared|if|else|then|for|to|next|output|val|asc|lock|write|on|error|goto|locate|ubound|pcopy|color|chdir|while|mkdir|kill|instr|redim|sub|function|module|lof|len|and|random|end|as|string|integer|print|let|data|freefile|read|restore|long|const|case|open|line|input|close|shell|do|loop|until|_direxists|_screenshow|_hide|_limit|_byte|system|inkey|_integer|_unsigned|_instrrev)\\b",
   "color": "#93c4eb",
   "upper": true
   }, {

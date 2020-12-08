@@ -8,13 +8,15 @@
 import Cocoa
 import SwiftHEXColors
 
-class Document: NSDocument, NSWindowDelegate {
-  
+class Document: NSDocument {
+
+  // MARK: - Protected vars
+  var sideBarWidth: CGFloat = 250
+  var sideBarVisible: Bool = true
+  var contents: Content = Content("DEFINT A-Z\n")
+
   // MARK: - Private vars
-  private var contents: Content = Content("DEFINT A-Z\n")
-  private var sideBarWidth: CGFloat = 250
   private var isRunning: Bool = false
-  private var sideBarVisible: Bool = true
   private var rootFolder: BaseElement?;
   
   //- MARK: - Outlets
@@ -40,7 +42,9 @@ class Document: NSDocument, NSWindowDelegate {
   override func windowControllerDidLoadNib(_ windowController: NSWindowController) {
     toolbar.displayMode = NSToolbar.DisplayMode.iconOnly
     
-    self.displayName.append(".bas")
+    if (!self.displayName.lowercased().hasSuffix(".bas")) {
+      self.displayName.append(".bas")
+    }
     self.displayName = self.displayName.uppercased()
     
     rootFolder = SourceFolder("/Users/familygw/Projects/QB64IDE");
@@ -61,60 +65,6 @@ class Document: NSDocument, NSWindowDelegate {
   
   override func read(from data: Data, ofType typeName: String) throws {
     contents.read(data)
-  }
-  
-  func windowWillResize(_ sender: NSWindow, to frameSize: NSSize) -> NSSize {
-    sideBarWidth = splitView.subviews[0].frame.width
-    
-    return frameSize
-  }
-  
-  func windowDidResize(_ notification: Notification) {
-    splitView.setPosition(sideBarWidth, ofDividerAt: 0)
-  }
-  
-  // MARK: - Actions
-  @IBAction func btnRunClick(_ sender: Any) {
-  }
-  
-  @IBAction func btnStopClick(_ sender: Any) {
-  }
-  
-  @IBAction func toggleSidebar(_ sender: Any) {
-    if (sideBarVisible) {
-      sideBarWidth = splitView.subviews[0].frame.width
-      animatePanelChange(toPosition: 0, ofDividerAt: 0, to: false)
-      sideBarVisible = false
-    } else {
-      animatePanelChange(toPosition: sideBarWidth, ofDividerAt: 0, to: false)
-      sideBarVisible = true
-    }
-  }
-  
-  private func animatePanelChange(toPosition position: CGFloat, ofDividerAt dividerIndex: Int, to visible: Bool) {
-    NSAnimationContext.runAnimationGroup { context in
-      context.allowsImplicitAnimation = true
-      context.duration = 0.3
-      
-      splitView.setPosition(position, ofDividerAt: dividerIndex)
-      splitView.layoutSubtreeIfNeeded()
-    }
-  }
-  
-  private func initiateEditor() {
-    //-
-    //- Setup editor preferences
-    mainEditor.font = NSFont(name: "ModernDOS9x16", size: 16)
-    mainEditor.textColor = NSColor(hexString: "#ffffff")
-    mainEditor.backgroundColor = NSColor(hexString: "#0000aa")!
-    mainEditor.isAutomaticQuoteSubstitutionEnabled = false
-    mainEditor.textStorage?.delegate = self
-    
-    let lines = String(contents.contentString.components(separatedBy: "\n").count) as NSString
-    let size = lines.size(withAttributes: [NSAttributedString.Key.font: mainEditor.font!])
-    mainEditor.lnv_setUpLineNumberView(size.width + 11)
-    
-    mainEditor.string = contents.contentString
   }
   
 }
