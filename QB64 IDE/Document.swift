@@ -9,13 +9,14 @@ import Cocoa
 import SwiftHEXColors
 
 class Document: NSDocument {
-
+  
   // MARK: - Protected vars
   var sideBarWidth: CGFloat = 250
   var sideBarVisible: Bool = true
+  var isApplyingStyles: Bool = false
   var contents: Content = Content("DEFINT A-Z\n")
-  var isLoading: Bool = false
-
+  var syntaxs: CodeSyntax
+  
   // MARK: - Private vars
   private var isRunning: Bool = false
   
@@ -23,9 +24,15 @@ class Document: NSDocument {
   @IBOutlet weak var mainEditor: NSTextView!
   @IBOutlet weak var splitView: NSSplitView!
   @IBOutlet weak var toolbar: NSToolbar!
+  @IBOutlet var sourceListViewController: SourceListViewController!
   
   //- MARK: -
   override init() {
+    let filepath = Bundle.main.path(forResource: "BasicSyntax", ofType: "json")
+    let contents = try! String(contentsOfFile: filepath!).data(using: .utf8)
+    
+    self.syntaxs = try! JSONDecoder().decode(CodeSyntax.self, from: contents!)
+
     super.init()
   }
   
@@ -48,10 +55,7 @@ class Document: NSDocument {
     self.displayName = self.displayName.uppercased()
     
     self.initiateEditor()
-  }
-  
-  override func makeWindowControllers() {
-    super.makeWindowControllers()
+    NSApp.sendAction(#selector(SourceListViewController.loadDirectories(_:)), to: self.sourceListViewController, from: self)
   }
   
   /** method called when information is going to be saved  */
@@ -62,7 +66,6 @@ class Document: NSDocument {
   /** method called when information is to being loaded */
   override func read(from data: Data, ofType typeName: String) throws {
     contents.read(data)
-    isLoading = true
   }
   
 }

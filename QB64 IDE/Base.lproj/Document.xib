@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="Document" customModule="QB64_IDE" customModuleProvider="target">
             <connections>
                 <outlet property="mainEditor" destination="QCV-tM-O0x" id="0Tg-Qw-acR"/>
+                <outlet property="sourceListViewController" destination="3Sw-5I-ey3" id="ODY-Xh-ZUu"/>
                 <outlet property="splitView" destination="bAZ-Gr-3BI" id="fru-eh-tqd"/>
                 <outlet property="toolbar" destination="wdS-FK-Psh" id="ofe-Q4-vgF"/>
                 <outlet property="window" destination="xOd-HO-29H" id="5dm-dC-dKd"/>
@@ -32,14 +33,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="250" height="571"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiA-Ve-Yve">
+                                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiA-Ve-Yve">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="571"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" id="Oxm-n0-2Cm">
                                             <rect key="frame" x="1" y="1" width="248" height="569"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="13" outlineTableColumn="G3D-ZA-PTL" id="vwt-vb-Kf3">
+                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="13" outlineTableColumn="G3D-ZA-PTL" id="vwt-vb-Kf3">
                                                     <rect key="frame" x="0.0" y="0.0" width="248" height="569"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="3" height="0.0"/>
@@ -81,7 +82,7 @@
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <imageView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1nI-JT-Mg5">
-                                                                            <rect key="frame" x="3" y="0.0" width="17" height="17"/>
+                                                                            <rect key="frame" x="3" y="0.5" width="17" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="doc.fill" catalog="system" id="e8E-0c-q9A"/>
                                                                         </imageView>
@@ -112,11 +113,11 @@
                                             <nil key="backgroundColor"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="eg9-ks-kGO">
-                                            <rect key="frame" x="1" y="383" width="148" height="16"/>
+                                            <rect key="frame" x="-100" y="-100" width="148" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="9Qs-Dt-0iW">
-                                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                            <rect key="frame" x="-100" y="-100" width="15" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -130,11 +131,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="1018" height="571"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" id="sTy-vC-V86">
-                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="571"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1018" height="571"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="QCV-tM-O0x">
-                                                    <rect key="frame" x="0.0" y="0.0" width="1003" height="571"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="1018" height="571"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -150,15 +151,18 @@
                                                         </fragment>
                                                     </attributedString>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="-2" id="paw-fB-uCZ"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                         </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="rlw-0l-DMW">
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="rlw-0l-DMW">
                                             <rect key="frame" x="-100" y="-100" width="225" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="b1b-h3-rP6">
-                                            <rect key="frame" x="1003" y="0.0" width="15" height="571"/>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="b1b-h3-rP6">
+                                            <rect key="frame" x="1002" y="0.0" width="16" height="571"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -214,7 +218,11 @@
             </connections>
             <point key="canvasLocation" x="-412.5" y="31.5"/>
         </window>
-        <customObject id="3Sw-5I-ey3" customClass="SourceListViewController" customModule="QB64_IDE" customModuleProvider="target"/>
+        <customObject id="3Sw-5I-ey3" customClass="SourceListViewController" customModule="QB64_IDE" customModuleProvider="target">
+            <connections>
+                <outlet property="sourceListView" destination="vwt-vb-Kf3" id="iNx-Y4-OpY"/>
+            </connections>
+        </customObject>
     </objects>
     <resources>
         <image name="doc.fill" catalog="system" width="14" height="16"/>

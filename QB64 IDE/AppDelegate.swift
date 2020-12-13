@@ -21,13 +21,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationShouldTerminate(_ sender: NSApplication)-> NSApplication.TerminateReply {
     return .terminateNow
   }
-   
-  @objc func runApp(_ sender: Any) {
+  
+  @objc func willRunApp(_ sender: Any) {
     if let doc = NSApp.orderedDocuments.first as? Document {
-      doc.save(self)
-      print("RUN APP!!!")
+      doc.save(withDelegate: self, didSave: #selector(AppDelegate.didRunApp(_:_:)), contextInfo: nil)
     }
   }
-
+  
+  @objc func didRunApp(_ sender: Any, _ didSave: Bool) {
+    if (!didSave) {
+      NSAlert.showAlert(title: "Error", message: "You must save the file before try to run the program.", style: .warning, asSheet: true)
+    } else {
+      print("RUN APP!!! \(didSave)")
+    }
+  }
+  
 }
 

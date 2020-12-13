@@ -9,25 +9,18 @@ import Foundation
 
 class SourceListViewController: NSObject, NSOutlineViewDelegate, NSOutlineViewDataSource {
   
-  var rootFolder: [BaseElement?];
+  var rootFolder: [SourceFile?];
   @IBOutlet weak var sourceListView:NSOutlineView?
   
   override init() {
-    let rootFolder = SourceFolder("/Users/familygw/Projects/QB64 IDE");
-    rootFolder.childs.append(SourceFile("/Users/familygw/Projects/QB64 IDE/file1.bas"))
-    rootFolder.childs.append(SourceFile("/Users/familygw/Projects/QB64 IDE/file2.bas"))
-    rootFolder.childs.append(SourceFile("/Users/familygw/Projects/QB64 IDE/file3.bas"))
-    rootFolder.childs.append(SourceFile("/Users/familygw/Projects/QB64 IDE/file4.bas"))
-    rootFolder.childs.append(SourceFile("/Users/familygw/Projects/QB64 IDE/file5.bas"))
-    rootFolder.childs.append(SourceFile("/Users/familygw/Projects/QB64 IDE/file6.bas"))
-    rootFolder.childs.append(SourceFile("/Users/familygw/Projects/QB64 IDE/file7.bas"))
-    rootFolder.childs.append(SourceFile("/Users/familygw/Projects/QB64 IDE/file8.bas"))
-    rootFolder.childs.append(SourceFile("/Users/familygw/Projects/QB64 IDE/file9.bas"))
+    self.rootFolder = [];
+  }
+  
+  @objc func loadDirectories(_ sender: Any?) {
+    // TODO: handle a better way to gent the folder content (lazy load?)
+    let folder = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
     
-    self.rootFolder = [rootFolder]
-    
-    self.sourceListView?.expandItem(nil, expandChildren: true)
-    
+    self.rootFolder = [SourceFile.buildNode(folder)]
     self.sourceListView?.reloadData()
   }
   
@@ -40,11 +33,11 @@ class SourceListViewController: NSObject, NSOutlineViewDelegate, NSOutlineViewDa
     }
     
     // Develop time (debug) - check that the item is really Item
-    assert(item is BaseElement);
+    assert(item is SourceFile);
     
     // item != nil
     // We're being asked for the number of children of an item
-    return (item as! BaseElement).childs.count
+    return (item as! SourceFile).childs.count
   }
   
   func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
@@ -55,23 +48,24 @@ class SourceListViewController: NSObject, NSOutlineViewDelegate, NSOutlineViewDa
     }
     
     // Develop time (debug) - check that the item is really Item
-    assert(item is BaseElement);
+    assert(item is SourceFile);
     
     // item != nil
     // We're being asked for n-th (index) child of an item
-    return (item as! BaseElement).childs[index]
+    return (item as! SourceFile).childs[index]
   }
   
   func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
     // Item is expandable only if it has children
-    return (item as? BaseElement)?.childs.count ?? 0 > 0
+    return (item as? SourceFile)?.childs.count ?? 0 > 0
   }
   
   // MARK: - Delegates
   func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
     let cellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("DataCell"), owner: self) as? NSTableCellView
-    cellView?.textField?.stringValue = (item as! BaseElement).name
-    cellView?.imageView?.image = (item as! BaseElement).icon
+    cellView?.textField?.stringValue = (item as! SourceFile).name
+    cellView?.imageView?.image = (item as! SourceFile).icon
+    cellView?.imageView?.image?.backgroundColor = NSColor(hexString: "#fff")!
 
     return cellView
   }

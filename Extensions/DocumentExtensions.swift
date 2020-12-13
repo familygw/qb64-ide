@@ -7,7 +7,7 @@
 import Cocoa
 import Foundation
 
-extension Document: NSTextStorageDelegate, NSWindowDelegate {
+extension Document: NSWindowDelegate, NSTextViewDelegate, NSTextStorageDelegate {
   
   // MARK: - Window Delegates
   func windowWillResize(_ sender: NSWindow, to frameSize: NSSize) -> NSSize {
@@ -24,45 +24,65 @@ extension Document: NSTextStorageDelegate, NSWindowDelegate {
     }
   }
   
-  // MARK: - TextStorage Delegates
-  func textStorage(_ textStorage: NSTextStorage, didProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int) {
-    if delta != 0 && editedMask.rawValue > 1 {
-      guard let filepath = Bundle.main.path(forResource: "BasicSyntax", ofType: "json") else { return }
-      guard let contents = try? String(contentsOfFile: filepath).data(using: .utf8) else { return }
-      guard let syntax = try? JSONDecoder().decode(CodeSyntax.self, from: contents) else { return }
+  // MARK: - TextStorage & TextView Delegates
+  func textView(_ textView: NSTextView, shouldChangeTextIn affectedCharRange: NSRange, replacementString: String?) -> Bool {
+    if (replacementString == "\n") {
+      self.isApplyingStyles = true
       
-      var extended = NSUnionRange(editedRange, NSString(string: mainEditor.string).lineRange(for: NSMakeRange(editedRange.location, 0)))
-      extended = NSUnionRange(editedRange, NSString(string: mainEditor.string).lineRange(for: NSMakeRange(NSMaxRange(editedRange), 0)))
+      self.applyStyles(textView, affectedCharRange)
       
-      for setting in syntax.settings {
-        //-
-        let regex = try! NSRegularExpression.init(pattern: setting.exp, options: [.anchorsMatchLines, .caseInsensitive])
-        regex.enumerateMatches(in: textStorage.string, options: [], range: extended) { (match, flags, stop) in
-          //-
-          //- Define text attributes
-          let matchColor = [NSAttributedString.Key.foregroundColor : NSColor(hexString: setting.color)!]
-          //-
-          //- Identify where in document the match was found (index, length)
-          let matchRange = match!.range(at: 1)
-          applyStyles(textStorage, matchColor, matchRange, setting.upper)
-          //-
-          //- Now go and lookup for all other coincidences
-          let maxRange = matchRange.location + matchRange.length
-          if ((maxRange + 1) < textStorage.length) {
-            applyStyles(textStorage, matchColor, NSMakeRange(maxRange, 0), setting.upper)
-          }
-        }
-        //-
-      }
-      
-      if (isLoading) {
-        self.isLoading = false
-      } else {
-        self.updateChangeCount(.changeDone)
-      }
+      self.isApplyingStyles = false
     }
     
-    self.contents.contentString = textStorage.string
+    return true //- always true, so the text is printed in textview
+  }
+  
+  func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+    let arr:[Selector] = [#selector(NSStandardKeyBindingResponding.moveUp(_:)), #selector(NSStandardKeyBindingResponding.moveDown(_:))]
+    
+    if arr.firstIndex(of: commandSelector) != nil {
+      self.applyStyles(textView, NSRange(location: 0, length: textView.string.count))
+    }
+    
+    return false //- always false, so the cursor can change in text content
+  }
+  
+  func applyStyles(_ textView:NSTextView, _ range: NSRange) {
+    
+    var extended = NSUnionRange(range, NSString(string: mainEditor.string).lineRange(for: NSMakeRange(range.location, 0)))
+    extended = NSUnionRange(range, NSString(string: mainEditor.string).lineRange(for: NSMakeRange(NSMaxRange(range), 0)))
+    
+    for setting in self.syntaxs.settings {
+      //-
+      let regex = try! NSRegularExpression.init(pattern: setting.exp, options: [.anchorsMatchLines, .caseInsensitive])
+      regex.enumerateMatches(in: textView.string, options: [], range: extended) { (match, flags, stop) in
+        //-
+        //- Define text attributes
+        let matchColor = [NSAttributedString.Key.foregroundColor : NSColor(hexString: setting.color)!]
+        //-
+        //- Identify where in document the match was found (index, length)
+        let matchRange = match!.range(at: 1)
+        applyStyles(textView.textStorage!, matchColor, matchRange, setting.upper)
+        //-
+        //- Now go and lookup for all other coincidences
+        let maxRange = matchRange.location + matchRange.length
+        if ((maxRange + 1) < textView.textStorage!.length) {
+          applyStyles(textView.textStorage!, matchColor, NSMakeRange(maxRange, 0), setting.upper)
+        }
+      }
+      //-
+    }
+    
+    self.contents.contentString = textView.textStorage!.string
+    self.updateChangeCount(.changeDone) //- tell document/window that there is changes!
+  }
+  
+  func textStorage(_ textStorage: NSTextStorage, didProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int) {
+    
+    if ((editedMask.rawValue < 3) && !self.isApplyingStyles) {
+      self.applyStyles(mainEditor, editedRange)
+    }
+    
   }
   
   private func applyStyles(_ textStorage: NSTextStorage, _ attrs: [NSAttributedString.Key : Any], _ range: NSRange, _ upper: Bool = false) {
@@ -74,7 +94,7 @@ extension Document: NSTextStorageDelegate, NSWindowDelegate {
   
   // MARK: - Actions
   @IBAction func btnRunClick(_ sender: Any) {
-    NSApp.sendAction(#selector(AppDelegate.runApp(_:)), to: nil, from: self)
+    NSApp.sendAction(#selector(AppDelegate.willRunApp(_:)), to: nil, from: self)
   }
   
   @IBAction func btnStopClick(_ sender: Any) {
@@ -116,7 +136,7 @@ extension Document: NSTextStorageDelegate, NSWindowDelegate {
     mainEditor.isAutomaticQuoteSubstitutionEnabled = false
     mainEditor.isAutomaticSpellingCorrectionEnabled = false
     
-    mainEditor.textStorage?.delegate = self
+    mainEditor.textStorage!.delegate = self
     
     let lines = String(contents.contentString.components(separatedBy: "\n").count) as NSString
     let size = lines.size(withAttributes: [NSAttributedString.Key.font: mainEditor.font!])
