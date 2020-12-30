@@ -8,22 +8,22 @@ import Cocoa
 import Foundation
 
 class Content: NSObject {
-    @objc dynamic var contentString = ""
-    
-    public init(_ contentString: String) {
-        self.contentString = contentString
-    }
-    
+  @objc dynamic var contentString = ""
+  
+  public init(_ contentString: String) {
+    self.contentString = contentString
+  }
+  
 }
 
 extension Content {
-    
-    func read(_ data: Data) {
-        contentString = String(bytes: data, encoding: .utf8)!
-    }
-    
-    func data() -> Data? {
-        return contentString.data(using: .utf8)
-    }
-    
+  
+  func read(_ data: Data) {
+    contentString = String(bytes: data, encoding: .utf8)!
+  }
+  
+  func data() -> Data? {
+    return contentString.data(using: .utf8)
+  }
+  
 }

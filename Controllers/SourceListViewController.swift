@@ -17,8 +17,9 @@ class SourceListViewController: NSObject, NSOutlineViewDelegate, NSOutlineViewDa
   }
   
   @objc func loadDirectories(_ sender: Any?) {
-    // TODO: handle a better way to gent the folder content (lazy load?)
-    let folder = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+    
+    //let folder: URL = try! FileManager.default.url(for: .userDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
+    let folder: URL = URL(string: "file:///Users/\(NSUserName())/Projects/qb64/")!
     
     self.rootFolder = [SourceFile.buildNode(folder)]
     self.sourceListView?.reloadData()
@@ -26,30 +27,30 @@ class SourceListViewController: NSObject, NSOutlineViewDelegate, NSOutlineViewDa
   
   // MARK: - DataSource
   func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-    if item == nil {
+    if (item == nil) {
       // item == nil
       // We're being asked for the number of top level elements (kAddToBag, ...)
       return self.rootFolder.count
     }
-    
-    // Develop time (debug) - check that the item is really Item
-    assert(item is SourceFile);
-    
     // item != nil
     // We're being asked for the number of children of an item
-    return (item as! SourceFile).childs.count
+    if let leaf = (item as? SourceFile) {
+      if (leaf.isFolder) {
+        leaf.childs = SourceFile.fetchChilds(leaf);
+      }
+      
+      return leaf.childs.count
+    }
+    
+    return 0
   }
   
   func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-    if item == nil {
+    if (item == nil) {
       // item == nil
       // We're being asked for n-th (index) top level element
       return rootFolder[index] as Any
     }
-    
-    // Develop time (debug) - check that the item is really Item
-    assert(item is SourceFile);
-    
     // item != nil
     // We're being asked for n-th (index) child of an item
     return (item as! SourceFile).childs[index]
@@ -57,7 +58,30 @@ class SourceListViewController: NSObject, NSOutlineViewDelegate, NSOutlineViewDa
   
   func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
     // Item is expandable only if it has children
-    return (item as? SourceFile)?.childs.count ?? 0 > 0
+    return (item as? SourceFile)!.isFolder
+  }
+  
+  func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+    if let leaf = (item as? SourceFile) {
+      if (!leaf.isFolder) {
+        //-
+        //- Not a folder, then fetch content and override 
+        do {
+          let url = URL(string: "file://\(leaf.path)")
+          let doc = (NSApplication.shared.orderedDocuments.first as? Document)
+          if (doc != nil) {
+            doc!.fileURL = url
+            doc!.contents.contentString = try String(contentsOf: url!, encoding: .utf8)
+            doc!.mainEditor.string = doc!.contents.contentString
+            doc!.updateChangeCount(.changeCleared)
+          }
+        } catch {
+          NSAlert.showAlert(title: "Open File", message: error.localizedDescription, style: .warning)
+        }
+
+      }
+    }
+    return true
   }
   
   // MARK: - Delegates
