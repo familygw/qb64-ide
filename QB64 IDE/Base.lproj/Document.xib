@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="documentWindow" toolbarStyle="unified" id="xOd-HO-29H" userLabel="Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="133" y="235" width="1269" height="571"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1667"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1792" height="1095"/>
             <view key="contentView" id="gIp-Ho-8D9">
                 <rect key="frame" x="0.0" y="0.0" width="1269" height="571"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,7 +139,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <size key="minSize" width="1003" height="571"/>
+                                                    <size key="minSize" width="1018" height="571"/>
                                                     <size key="maxSize" width="1018" height="10000000"/>
                                                     <attributedString key="textStorage">
                                                         <fragment content="DEFINT A-Z">
@@ -191,7 +191,7 @@
                         <size key="minSize" width="34" height="29"/>
                         <size key="maxSize" width="34" height="29"/>
                         <connections>
-                            <action selector="btnRunClick:" target="-2" id="b6E-vi-ZiP"/>
+                            <action selector="willRunApp:" target="cZy-yb-1lL" id="Oyh-1j-Tqz"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="C811CA59-6D14-41AC-9CCA-D77CA68802AB" explicitItemIdentifier="tb_document_stop" label="Stop" paletteLabel="Stop" tag="-1" id="XUZ-US-mw3">
@@ -199,7 +199,7 @@
                         <size key="minSize" width="40.5" height="29"/>
                         <size key="maxSize" width="40.5" height="29"/>
                         <connections>
-                            <action selector="btnStopClick:" target="-2" id="IGy-OX-8ml"/>
+                            <action selector="stopRunningApp:" target="cZy-yb-1lL" id="lOf-bd-P32"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Pa2-1s-vBt"/>
@@ -223,6 +223,7 @@
                 <outlet property="sourceListView" destination="vwt-vb-Kf3" id="iNx-Y4-OpY"/>
             </connections>
         </customObject>
+        <customObject id="cZy-yb-1lL" customClass="AppController" customModule="QB64_IDE" customModuleProvider="target"/>
     </objects>
     <resources>
         <image name="doc.fill" catalog="system" width="14" height="16"/>

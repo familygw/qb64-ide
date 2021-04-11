@@ -91,15 +91,7 @@ extension Document: NSWindowDelegate, NSTextViewDelegate, NSTextStorageDelegate 
       textStorage.replaceCharacters(in: range, with: (textStorage.string as NSString).substring(with: range).uppercased() )
     }
   }
-  
-  // MARK: - Actions
-  @IBAction func btnRunClick(_ sender: Any) {
-    NSApp.sendAction(#selector(AppDelegate.willRunApp(_:)), to: nil, from: self)
-  }
-  
-  @IBAction func btnStopClick(_ sender: Any) {
-  }
-  
+    
   @IBAction func toggleSidebar(_ sender: Any) {
     if (sideBarVisible) {
       sideBarWidth = splitView.subviews[0].frame.width

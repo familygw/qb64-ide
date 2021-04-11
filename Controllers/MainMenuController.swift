@@ -10,7 +10,8 @@ import Foundation
 class MainMenuController : NSViewController, NSMenuDelegate {
   
   @IBAction func mnuRunApp(_ sender: Any) {
-    NSApp.sendAction(#selector(AppDelegate.willRunApp(_:)), to: nil, from: self)
+    print("RUN APP CALLED MENU")
+    NSApplication.shared.sendAction(#selector(AppController.willRunApp(_:)), to: AppController.self, from: self)
   }
   
 }

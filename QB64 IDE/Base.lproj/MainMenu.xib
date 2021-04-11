@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -10,10 +10,10 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="QB64_IDE" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="iFZ-VZ-8sw" customClass="MainMenuController" customModule="QB64_IDE" customModuleProvider="target"/>
+        <customObject id="tTa-zp-q1s" customClass="AppController" customModule="QB64_IDE" customModuleProvider="target"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="QB64 IDE" id="1Xt-HY-uBw">
@@ -328,11 +328,14 @@
                             <menuItem title="Run" keyEquivalent="" identifier="qb64-ide.menu.program.run" id="5i8-hY-VLW">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="mnuRunApp:" target="iFZ-VZ-8sw" id="8AF-yi-kQa"/>
+                                    <action selector="willRunApp:" target="tTa-zp-q1s" id="gfO-MO-6LE"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Stop" id="luS-5b-GWJ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="stopRunningApp:" target="tTa-zp-q1s" id="gNl-D3-td0"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>
@@ -407,9 +410,6 @@
                     </menu>
                 </menuItem>
             </items>
-            <connections>
-                <outlet property="delegate" destination="iFZ-VZ-8sw" id="I05-hW-e3E"/>
-            </connections>
             <point key="canvasLocation" x="-815" y="-133"/>
         </menu>
     </objects>

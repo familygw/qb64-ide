@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E718076126229AC900ADCC67 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718076026229AC900ADCC67 /* AppController.swift */; };
+		E7402F3926223D8300744B62 /* internal in Resources */ = {isa = PBXBuildFile; fileRef = E7402F3726223D8300744B62 /* internal */; };
+		E7402F3A26223D8300744B62 /* qb64 in Resources */ = {isa = PBXBuildFile; fileRef = E7402F3826223D8300744B62 /* qb64 */; };
+		E7402F402622603E00744B62 /* ProgressHUDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7402F3F2622603E00744B62 /* ProgressHUDController.swift */; };
 		E7455A8C257E8D6200C33CA8 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7455A8B257E8D6200C33CA8 /* Content.swift */; };
 		E7455AAD257EC0F600C33CA8 /* ModernDOS8x14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7455AA8257EC0F600C33CA8 /* ModernDOS8x14.ttf */; };
 		E7455AAE257EC0F600C33CA8 /* ModernDOS9x16.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7455AA9257EC0F600C33CA8 /* ModernDOS9x16.ttf */; };
@@ -25,11 +29,16 @@
 		E746CFB1257D464100467322 /* SwiftHEXColors in Frameworks */ = {isa = PBXBuildFile; productRef = E746CFB0257D464100467322 /* SwiftHEXColors */; };
 		E76FBD86258589720015D4E8 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76FBD85258589720015D4E8 /* Common.swift */; };
 		E78CF7D1257FE8100047B6ED /* SourceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78CF7D0257FE8100047B6ED /* SourceListViewController.swift */; };
+		E78D36A72622610F006BBDB9 /* ProgressHUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78D36A62622610F006BBDB9 /* ProgressHUD.xib */; };
 		E7B11951257D5B8C00028AAD /* LineNumberRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B11950257D5B8C00028AAD /* LineNumberRulerView.swift */; };
 		E7B11964257D772900028AAD /* SourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B11963257D772900028AAD /* SourceFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E718076026229AC900ADCC67 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		E7402F3726223D8300744B62 /* internal */ = {isa = PBXFileReference; lastKnownFileType = folder; name = internal; path = ../../qb64/internal; sourceTree = "<group>"; };
+		E7402F3826223D8300744B62 /* qb64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = qb64; path = ../../qb64/qb64; sourceTree = "<group>"; };
+		E7402F3F2622603E00744B62 /* ProgressHUDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDController.swift; sourceTree = "<group>"; };
 		E7455A8B257E8D6200C33CA8 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		E7455AA8257EC0F600C33CA8 /* ModernDOS8x14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModernDOS8x14.ttf; sourceTree = "<group>"; };
 		E7455AA9257EC0F600C33CA8 /* ModernDOS9x16.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ModernDOS9x16.ttf; sourceTree = "<group>"; };
@@ -51,6 +60,7 @@
 		E76FBD85258589720015D4E8 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		E78CF7D0257FE8100047B6ED /* SourceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceListViewController.swift; sourceTree = "<group>"; };
 		E78CF7D9258013040047B6ED /* PREVIEW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PREVIEW.png; sourceTree = "<group>"; };
+		E78D36A62622610F006BBDB9 /* ProgressHUD.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressHUD.xib; sourceTree = "<group>"; };
 		E7B11950257D5B8C00028AAD /* LineNumberRulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineNumberRulerView.swift; sourceTree = "<group>"; };
 		E7B11963257D772900028AAD /* SourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,17 +77,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E70621CD2622327D0013EEB7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E7402F3726223D8300744B62 /* internal */,
+				E7402F3826223D8300744B62 /* qb64 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E746CF8A257D41BE00467322 = {
 			isa = PBXGroup;
 			children = (
-				E78CF7D9258013040047B6ED /* PREVIEW.png */,
 				E7455ADE257F2FBD00C33CA8 /* README.md */,
+				E78CF7D9258013040047B6ED /* PREVIEW.png */,
 				E7B01BC1257D7D130010BEE5 /* Controllers */,
-				E7B11962257D771800028AAD /* Models */,
 				E7B1194F257D5B7800028AAD /* Extensions */,
 				E7B11945257D54E100028AAD /* Fonts */,
-				E746CF95257D41BE00467322 /* QB64 IDE */,
+				E7B11962257D771800028AAD /* Models */,
 				E746CF94257D41BE00467322 /* Products */,
+				E746CF95257D41BE00467322 /* QB64 IDE */,
+				E70621CD2622327D0013EEB7 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +118,7 @@
 				E746CFA2257D41BE00467322 /* Info.plist */,
 				E746CF96257D41BE00467322 /* AppDelegate.swift */,
 				E746CF98257D41BE00467322 /* Document.swift */,
+				E78D36A62622610F006BBDB9 /* ProgressHUD.xib */,
 			);
 			path = "QB64 IDE";
 			sourceTree = "<group>";
@@ -107,6 +128,8 @@
 			children = (
 				E7455AE5257F4C3B00C33CA8 /* MainMenuController.swift */,
 				E78CF7D0257FE8100047B6ED /* SourceListViewController.swift */,
+				E7402F3F2622603E00744B62 /* ProgressHUDController.swift */,
+				E718076026229AC900ADCC67 /* AppController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -207,7 +230,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7402F3A26223D8300744B62 /* qb64 in Resources */,
 				E7455AB0257EC0F600C33CA8 /* ModernDOS8x8.ttf in Resources */,
+				E78D36A72622610F006BBDB9 /* ProgressHUD.xib in Resources */,
+				E7402F3926223D8300744B62 /* internal in Resources */,
 				E746CF9E257D41BE00467322 /* Assets.xcassets in Resources */,
 				E7455AAF257EC0F600C33CA8 /* ModernDOS8x16.ttf in Resources */,
 				E7455AAD257EC0F600C33CA8 /* ModernDOS8x14.ttf in Resources */,
@@ -232,8 +258,10 @@
 				E7455A8C257E8D6200C33CA8 /* Content.swift in Sources */,
 				E746CF99257D41BE00467322 /* Document.swift in Sources */,
 				E76FBD86258589720015D4E8 /* Common.swift in Sources */,
+				E718076126229AC900ADCC67 /* AppController.swift in Sources */,
 				E7455ACC257EDC8A00C33CA8 /* CodeSyntax.swift in Sources */,
 				E746CF97257D41BE00467322 /* AppDelegate.swift in Sources */,
+				E7402F402622603E00744B62 /* ProgressHUDController.swift in Sources */,
 				E7455AE6257F4C3B00C33CA8 /* MainMenuController.swift in Sources */,
 				E78CF7D1257FE8100047B6ED /* SourceListViewController.swift in Sources */,
 			);
